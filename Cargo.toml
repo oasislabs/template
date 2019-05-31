@@ -1,0 +1,22 @@
+[package]
+name = "quickstart"
+version = "0.1.0"
+authors = ["Oasis Labs <feedback@oasislabs.com>"]
+edition = "2018"
+publish = false
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+mantle = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+
+[dev-dependencies]
+mantle-test = "0.1"
+
+[build-dependencies]
+mantle = "0.1"
+
+[features]
+deploy = []
