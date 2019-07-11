@@ -1,5 +1,4 @@
 # Oasis Quickstart
 
-1. [Install Rust using rustup](https://rustup.rs)
-2. `rustup default nightly-2019-05-11`
-3. `cargo test`
+This repository is a template for building services that run on the Oasis blockchain platform.
+You can clone it manually or create a fresh copy using `oasis init`.
