@@ -1,20 +1,15 @@
 {
-  "name": "tests",
+  "name": "quickstart",
   "version": "1.0.0",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "clean": "oasis clean",
-    "build": "oasis build",
     "lint": "eslint *.js test/ config.js",
-    "lint:fix": "eslint *.js test/ config.js --fix",
-    "test-local": "env CHAIN=local mocha",
-    "test-devnet": "env CHAIN=devnet mocha"
+    "lint:fix": "eslint *.js test/ config.js --fix"
   },
   "devDependencies": {
     "bip39": "^2.5.0",
-    "command-line-args": "^5.1.1",
     "eslint": "^5.12.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
