@@ -1,10 +1,9 @@
-const process = require('process');
-const oasis = require('@oasislabs/client');
-const config = require('../config');
 const assert = require('assert');
+const config = require('../../config');
+const oasis = require('@oasislabs/client');
+const process = require('process');
 
 let bytecode = require('fs').readFileSync(config.WASM);
-console.log(config);
 
 const chains = {
   local: {
