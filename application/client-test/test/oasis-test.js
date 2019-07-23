@@ -1,7 +1,7 @@
 const assert = require('assert');
-const config = require('../../config');
-const oasis = require('@oasislabs/client');
 const process = require('process');
+const oasis = require('@oasislabs/client');
+const config = require('../../config');
 
 let bytecode = require('fs').readFileSync(config.WASM);
 
@@ -11,13 +11,11 @@ const chains = {
       config.WEB3_GATEWAY_URL,
       oasis.Wallet.fromMnemonic(config.MNEMONIC)
     ),
-    completion: chain => chain.gateway.disconnect(),
   },
   devnet: {
     gateway: new oasis.gateways.Gateway(
       config.DEVELOPER_GATEWAY_URL,
     ),
-    completion: chain => {},
   }
 };
 
@@ -34,8 +32,9 @@ if (chain === undefined) {
 
 console.log(chain);
 
-describe('MyService Test', function () {
+describe('MyService Test', () => {
   it('deploy a non-confidential service', async () => {
+    // Deploy MyService
     service = await oasis.deploy({
       bytecode,
       arguments: [],
@@ -43,7 +42,11 @@ describe('MyService Test', function () {
       gateway: chain.gateway,
     });
 
+    // Verify successful deployment
     assert.notEqual(service, null);
+
+    // Disconnect from the gateway
+    chain.gateway.disconnect();
   });
 
   // ...

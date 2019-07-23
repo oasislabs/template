@@ -24,6 +24,6 @@
     "mocha": "^6.1.4"
   },
   "dependencies": {
-    "@oasislabs/client": "^1.0.0-rc.3"
+    "@oasislabs/client": "^1.0.0-rc.6"
   }
 }
