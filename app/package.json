@@ -5,20 +5,31 @@
     "test": "test"
   },
   "scripts": {
-    "lint": "eslint *.js test/ config.js",
-    "lint:fix": "eslint *.js test/ config.js --fix"
+    "build": "tsc",
+    "test": "jest",
+    "clean": "rimraf dist",
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "lint:fix": "npm run-script lint -- --fix"
   },
   "devDependencies": {
-    "bip39": "^2.5.0",
-    "eslint": "^5.12.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "mocha": "^6.1.4"
+    "@types/jest": "^24.0.15",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "@oasislabs/client": "^1.0.0-rc.6"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testEnvironment": "node"
   }
 }
