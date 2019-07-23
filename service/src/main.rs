@@ -1,4 +1,4 @@
-use mantle::{Context, Service};
+use oasis_std::{Context, Service};
 
 #[derive(Service)]
 struct MyService;
@@ -14,18 +14,18 @@ impl MyService {
 }
 
 fn main() {
-    mantle::service!(MyService);
+    oasis_std::service!(MyService);
 }
 
 #[cfg(test)]
 mod tests {
-    extern crate mantle_test;
+    extern crate oasis_test;
 
     use super::*;
 
     #[test]
     fn test() {
-        let sender = mantle_test::create_account(1);
+        let sender = oasis_test::create_account(1);
         let ctx = Context::default().with_sender(sender);
         let mut client = MyService::new(&ctx);
         println!("{}", client.say_hello(&ctx));
