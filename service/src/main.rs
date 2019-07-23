@@ -1,9 +1,9 @@
-use mantle::{Context, Service};
+use oasis_std::Context;
 
-#[derive(Service)]
-struct MyService;
+#[derive(oasis_std::Service)]
+struct Quickstart;
 
-impl MyService {
+impl Quickstart {
     pub fn new(_ctx: &Context) -> Self {
         Self
     }
@@ -14,20 +14,20 @@ impl MyService {
 }
 
 fn main() {
-    mantle::service!(MyService);
+    oasis_std::service!(Quickstart);
 }
 
 #[cfg(test)]
 mod tests {
-    extern crate mantle_test;
+    extern crate oasis_test;
 
     use super::*;
 
     #[test]
     fn test() {
-        let sender = mantle_test::create_account(1);
+        let sender = oasis_test::create_account(1);
         let ctx = Context::default().with_sender(sender);
-        let mut client = MyService::new(&ctx);
+        let mut client = Quickstart::new(&ctx);
         println!("{}", client.say_hello(&ctx));
     }
 }
