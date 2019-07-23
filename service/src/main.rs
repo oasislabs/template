@@ -1,9 +1,9 @@
-use oasis_std::{Context, Service};
+use oasis_std::Context;
 
-#[derive(Service)]
-struct MyService;
+#[derive(oasis_std::Service)]
+struct Quickstart;
 
-impl MyService {
+impl Quickstart {
     pub fn new(_ctx: &Context) -> Self {
         Self
     }
@@ -14,7 +14,7 @@ impl MyService {
 }
 
 fn main() {
-    oasis_std::service!(MyService);
+    oasis_std::service!(Quickstart);
 }
 
 #[cfg(test)]
@@ -27,7 +27,7 @@ mod tests {
     fn test() {
         let sender = oasis_test::create_account(1);
         let ctx = Context::default().with_sender(sender);
-        let mut client = MyService::new(&ctx);
+        let mut client = Quickstart::new(&ctx);
         println!("{}", client.say_hello(&ctx));
     }
 }
