@@ -1,6 +1,6 @@
-use oasis_std::Context;
+use oasis_std::{Context, Service};
 
-#[derive(oasis_std::Service)]
+#[derive(Service)]
 struct Quickstart;
 
 impl Quickstart {
