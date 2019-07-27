@@ -1,7 +1,7 @@
 [package]
 name = "quickstart"
 version = "0.1.0"
-authors = ["Oasis Labs <feedback@oasislabs.com>"]
+authors = []
 edition = "2018"
 
 [dependencies]
