@@ -8,7 +8,7 @@ impl Quickstart {
         Self
     }
 
-    pub fn say_hello(&mut self, ctx: &Context) -> String {
+    pub fn say_hello(&self, ctx: &Context) -> String {
         format!("Hello, {}!", ctx.sender())
     }
 }
