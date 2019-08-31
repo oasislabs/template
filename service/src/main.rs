@@ -27,7 +27,7 @@ mod tests {
     fn test() {
         let sender = oasis_test::create_account(1);
         let ctx = Context::default().with_sender(sender);
-        let mut client = Quickstart::new(&ctx);
+        let client = Quickstart::new(&ctx);
         println!("{}", client.say_hello(&ctx));
     }
 }
