@@ -9,9 +9,7 @@ oasis.workspace.Quickstart.deploy({
     console.log(`    ${chalk.green('Deployed')} Quickstart at 0x${addrHex}`);
   })
   .catch(err => {
-    console.error(
-      `${chalk.red('error')}: could not deploy Quickstart: ${err.message}`,
-    );
+    console.error(chalk.red('error'), err);
   })
   .finally(() => {
     oasis.disconnect();
