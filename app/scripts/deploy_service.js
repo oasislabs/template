@@ -5,7 +5,7 @@ oasis.workspace.Quickstart.deploy({
   header: {confidential: false},
 })
   .then(res => {
-    let addrHex = Buffer.from(res._inner.address).toString('hex');
+    let addrHex = Buffer.from(res.address).toString('hex');
     console.log(`    ${chalk.green('Deployed')} Quickstart at 0x${addrHex}`);
   })
   .catch(err => {
