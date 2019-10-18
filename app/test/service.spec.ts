@@ -11,8 +11,8 @@ describe('Quickstart', () => {
     });
   });
 
-  it('deployed', async () => {
-    expect(service).toBeTruthy();
+  it('says hello', async () => {
+    expect(await service.sayHello()).toMatch(/^Hello/);
   });
 
   afterAll(() => {
