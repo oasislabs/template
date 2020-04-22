@@ -1,0 +1,16 @@
+[package]
+name = "sample-app"
+version = "0.1.0"
+authors = []
+edition = "2018"
+publish = false
+
+[dependencies]
+oasis-std = "0.4"
+
+[dev-dependencies]
+oasis-test = "0.4"
+
+# To declare services as dependencies of other services, use:
+# [package.metadata.oasis.<the-service>.dependencies]
+# <dependency-service> = { path = "../target/service/<dependency-service>.wasm" }

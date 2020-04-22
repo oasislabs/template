@@ -4,19 +4,26 @@ on: [push]
 
 jobs:
   build-test:
-    runs-on: ubuntu-18.04
-
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Install Oasis
-        run: curl --proto '=https' --tlsv1.2 -sSL https://get.oasis.dev | python - --speedrun
-      - name: Build and test service
+
+      - name: Install Oasis SDK
         run: |
-          export PATH=~/.local/bin:-~/.cargo/bin:$PATH
-          export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
-          oasis build
+          curl --proto '=https' --tlsv1.2 -sSL https://get.oasis.dev | python - --speedrun
+          echo "::set-env name=PATH::$HOME/.local/bin::$HOME/.cargo/bin:$PATH"
+
+      - name: Lint
+        run: |
+          cargo fmt -- --check
+          yarn
+          yarn lint
+
+      - name: Test
+        run: |
           oasis chain >& oasis.log &
           oasis test
