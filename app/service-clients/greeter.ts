@@ -58,23 +58,21 @@ export class Greeter {
         { greeting }: { greeting: string },
         options?: oasis.DeployOptions,
     ): Promise<Greeter> {
+        const payload = Greeter.makeDeployPayload(greeting);
         try {
-            const deployedAddr = await gateway.deploy(
-                await Greeter.makeDeployPayload(greeting),
-                options,
-            );
+            const deployedAddr = await gateway.deploy(payload, options);
             return new Greeter(deployedAddr, gateway);
         } catch (e) {
             throw e;
         }
     }
-    public static async makeDeployPayload(greeting: string): Promise<Buffer> {
+    private static makeDeployPayload(greeting: string): Buffer {
         const encoder = new oasis.Encoder();
         encoder.writeU8Array(Buffer.from(Greeter.BYTECODE, 'base64'));
         return oasis.abiEncode(['string' as oasis.Schema], [greeting], encoder);
     }
     public async greet(
-        name: string,
+        { name }: { name: string },
         options?: oasis.RpcOptions,
     ): Promise<string> {
         const payload = Greeter.makeGreetPayload(name);
@@ -85,7 +83,7 @@ export class Greeter {
             throw e;
         }
     }
-    public static makeGreetPayload(name: string): Buffer {
+    private static makeGreetPayload(name: string): Buffer {
         const encoder = new oasis.Encoder();
         encoder.writeU8(0);
         return oasis.abiEncode(['string' as oasis.Schema], [name], encoder);
@@ -101,9 +99,9 @@ export class Greeter {
             throw e;
         }
     }
-    public static makeGetGreetedPayload(): Buffer {
+    private static makeGetGreetedPayload(): Buffer {
         const encoder = new oasis.Encoder();
         encoder.writeU8(1);
-        return oasis.abiEncode([], [], encoder);
+        return encoder.finish();
     }
 }

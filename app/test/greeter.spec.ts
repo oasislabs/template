@@ -8,7 +8,7 @@ describe('Greeter Test', () => {
     let service: Greeter;
 
     // create a gateway to the oasis node
-    let gw: Gateway = new Gateway(
+    const gw: Gateway = new Gateway(
         'http://localhost:1234',
         'AAAAGYHZxhwjJXjnGEIiyDCyZJq+Prknbneb9gYe9teCKrGa',
     );
@@ -25,13 +25,11 @@ describe('Greeter Test', () => {
     });
 
     it('known greeting', async () => {
-        let sub = await Greeted.subscribe(gw, service.address);
-        let greeting = await service.greet('friend');
+        const sub = await Greeted.subscribe(gw, service.address);
+        const greeting = await service.greet({ name: 'friend' });
         expect(greeting).toBe('Hello, friend');
-        for await (const event of sub) {
-            expect(event.to).toBe('friend');
-            break;
-        }
+        const event = await sub.first();
+        expect(event.to).toBe('friend');
     });
 
     afterAll(async () => {

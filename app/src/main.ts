@@ -13,9 +13,10 @@ async function main() {
     });
     console.log(`Deployed Greeter at ${service.address.hex}`);
 
-    const sub = await Greeted.subscribe(gw, null /* listen to any address */);
+    const sub = await Greeted.subscribe(gw, service.address);
 
-    console.log(`Greeter says: ${await service.greet('sample-app')}`);
+    const greeting = await service.greet({ name: 'sample-app' }); // emits a `Greeted` event
+    console.log(`Greeter says: ${greeting}`);
 
     const event = await sub.first();
     console.log(`event: ${event.from.hex} greeted ${event.to}!`);

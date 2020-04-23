@@ -7,8 +7,8 @@
     "scripts": {
         "build": "tsc -b",
         "test": "jest",
-        "lint": "eslint 'app/src/**.ts'; prettier --check 'app/src/**.ts' package.json tsconfig.json",
-        "start": "node dist/src/main.js"
+        "lint": "eslint 'app/{src,test}/**.ts'; prettier --check 'app/{src,test}/**.ts' package.json tsconfig.json",
+        "deploy": "node dist/src/main.js"
     },
     "keywords": [],
     "author": "",
