@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "sample-app",
+    "name": "quickstart",
     "version": "0.0.0",
     "description": "",
     "main": "./app/src/main.ts",

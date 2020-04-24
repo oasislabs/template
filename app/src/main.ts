@@ -15,7 +15,7 @@ async function main() {
 
     const sub = await Greeted.subscribe(gw, service.address);
 
-    const greeting = await service.greet({ name: 'sample-app' }); // emits a `Greeted` event
+    const greeting = await service.greet({ name: 'quickstart' }); // emits a `Greeted` event
     console.log(`Greeter says: ${greeting}`);
 
     const event = await sub.first();
